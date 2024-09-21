@@ -33,8 +33,8 @@ def calc_cart_total():
     update_tax_dom()
 
 
-def calc_total(shopping_cart):
-    return sum(item.price for item in shopping_cart)
+def calc_total(cart):
+    return sum(item.price for item in cart)
 
 
 def set_cart_total_dom():
