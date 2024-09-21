@@ -24,18 +24,16 @@ def add_item_to_cart(name, price):
 
 
 def calc_cart_total():
-    calc_total()
+    global shopping_cart_total
+    shopping_cart_total = calc_total()
     set_cart_total_dom()
     update_shipping_icons()
     update_tax_dom()
 
 
 def calc_total():
-    global shopping_cart_total
     global shopping_cart
-
-    for cart in shopping_cart:
-        shopping_cart_total += cart.price
+    return sum(item.price for item in shopping_cart)
 
 
 def set_cart_total_dom():
