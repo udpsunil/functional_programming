@@ -20,12 +20,13 @@ shopping_cart_total = 0
 
 def add_item_to_cart(name, price):
     global shopping_cart
-    add_item(shopping_cart, name, price)
+    shopping_cart = add_item(shopping_cart, name, price)
     calc_cart_total()
 
 
 def add_item(cart, name, price):
     cart.append(Cart(name, price))
+    return cart
 
 
 def calc_cart_total():
