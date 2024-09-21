@@ -53,10 +53,14 @@ def update_shipping_icons():
     buy_buttons = get_buy_buttons_dom()
     for buy_button in buy_buttons:
         item = buy_button.item
-        if item.price + shopping_cart_total >= 20:
+        if get_free_shipping(shopping_cart_total, item.price):
             buy_button.show_free_shipping_icon()
         else:
             buy_button.hide_free_shipping_icon()
+
+
+def get_free_shipping(total, price):
+    return total + price >= 20
 
 
 show_free_shipping = lambda: print("show free shipping")
@@ -72,7 +76,11 @@ def get_buy_buttons_dom():
 
 def update_tax_dom():
     global shopping_cart_total
-    set_tax_dom(shopping_cart_total * 0.10)
+    set_tax_dom(calc_tax(shopping_cart_total))
+
+
+def calc_tax(amount):
+    return amount * 0.10
 
 
 def set_tax_dom(tax):
